@@ -5,6 +5,13 @@
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 
 tasks:
-  - init: sdk default java 17.0.7.fx-zulu & ./mvnw install -DskipTests=false
+  - init: |
+      (
+        sdk install java 20.0.1.fx-zulu
+        sdk update
+        sdk default java 20.0.1.fx-zulu
+        ./mvnw install -DskipTests=false
+      )
+    
 
 

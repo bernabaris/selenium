@@ -7,7 +7,7 @@
 tasks:
   - init: |
       (
-        sdk install java 20.0.1.fx-zulu
+        sdk install java 20.0.1.fx-zulu -y 
         sdk update
         sdk default java 20.0.1.fx-zulu
         ./mvnw install -DskipTests=false

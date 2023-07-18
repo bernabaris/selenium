@@ -3,15 +3,29 @@
 # and commit this file to your remote git repository to share the goodness with others.
 
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
+image:
+  file: .gitpod.Dockerfile
 
+ports:
+  - port: 3000
+    onOpen: open-browser
+    visibility: public
+    name: Website
+    description: Preview of Website
+  - port: 5900
+    onOpen: ignore
+    name: VNC
+    description: VNC Server
+  - port: 6080
+    onOpen: open-browser
+    visibility: public
+    name: VNC
+    description: VNC Viewer
+
+# List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/configure/workspaces/tasks/
 tasks:
-  - init: |
-      (
-        sdk install java 20.0.1.fx-zulu -y 
-        sdk update
-        sdk default java 20.0.1.fx-zulu
-        ./mvnw install -DskipTests=false
-      )
+  - init: ./mvnw install -DskipTests=false
     
+
 
 

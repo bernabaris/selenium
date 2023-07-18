@@ -1,18 +1,34 @@
 package com.github.bernabaris.seleniumsproject.pages;
 
-public class MainPage {
+import com.github.bernabaris.seleniumsproject.libraries.WebDriverLibrary;
+import org.openqa.selenium.WebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
+public class MainPage {
+    public MainPage() {
+
+        System.out.println("In Main page");
+    }
+    @Autowired
     private LoginPage loginPage;
+    @Autowired
     public HomePage homePage;
 
-    public MainPage(LoginPage loginPage, HomePage homePage) {
-        this.loginPage = loginPage;
-        this.homePage = homePage;
-    }
+    @Value("${app.url}")
+    private String appUrl;
+
+     @Autowired
+     private WebDriver webDriver;
 
     public void PerformLogin() {
+
+        webDriver.navigate().to(appUrl);
+        System.out.println("Login" + appUrl);
         homePage.ClickLogin();
-        loginPage.Login("admin","password1234");
+        loginPage.Login("admin","adminpassword23432");
         loginPage.ClickLogin();
     }
 }
